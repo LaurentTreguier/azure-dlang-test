@@ -1,0 +1,9 @@
+{
+	"name": "azure-dlang-test",
+	"authors": [
+		"Laurent Tréguier"
+	],
+	"description": "A minimal D application to test Azure Pipelines.",
+	"copyright": "Copyright © 2018, Laurent Tréguier",
+	"license": "MIT"
+}

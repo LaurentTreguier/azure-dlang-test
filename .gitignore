@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+azure-dlang-test.so
+azure-dlang-test.dylib
+azure-dlang-test.dll
+azure-dlang-test.a
+azure-dlang-test.lib
+azure-dlang-test-test-*
+azure-dlang-test
+*.exe
+*.o
+*.obj
+*.lst
