@@ -7,7 +7,10 @@ pool:
   vmImage: 'ubuntu-16.04'
 
 steps:
+- script: curl -fsS https://dlang.org/install.sh | bash -s dmd
+  displayName: 'Installation'
+
 - script: |
-    curl -fsS https://dlang.org/install.sh | bash -s dmd --activate
+    source $(~/dlang/install.sh dmd --activate)
     dub build
   displayName: 'Build'
