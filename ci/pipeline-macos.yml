@@ -1,0 +1,5 @@
+steps:
+- template: install-packages-macos.yml
+- template: install-ldc-posix.yml
+- template: dub-build-posix.yml
+- template: upx-compress.yml

@@ -1,0 +1,4 @@
+steps:
+- template: install-packages-windows.yml
+- template: install-ldc-windows.yml
+- template: dub-build-windows.yml
