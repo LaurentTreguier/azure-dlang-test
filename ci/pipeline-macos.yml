@@ -1,5 +1,6 @@
 steps:
-- template: install-packages-macos.yml
+- script: brew install upx
+  displayName: 'Homebrew packages installation'
 - template: install-ldc-posix.yml
 - template: dub-build-posix.yml
 - template: upx-compress.yml

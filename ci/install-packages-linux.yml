@@ -1,6 +1,0 @@
-steps:
-- script: |
-    sudo dpkg --add-architecture i386
-    sudo apt-get update
-    sudo apt-get install upx-ucl gcc-multilib libcurl3:amd64 libcurl3:i386
-  displayName: 'Packages installation'
