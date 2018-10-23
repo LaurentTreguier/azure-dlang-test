@@ -31,7 +31,7 @@ jobs:
   pool:
     vmImage: 'vs2017-win2016'
   variables:
-    arch: x86_mscoff
+    arch: x86
   steps:
   - template: pipeline-windows.yml
 - job: 'Windows_x86_64'
