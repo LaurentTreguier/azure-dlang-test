@@ -18,7 +18,7 @@ jobs:
   variables:
     arch: x86_64
   steps:
-  - script: brew install upx-ucl
+  - script: brew install upx
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
   - template: upx-compress.yml
