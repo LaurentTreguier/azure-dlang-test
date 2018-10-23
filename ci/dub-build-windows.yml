@@ -1,5 +1,5 @@
 steps:
 - powershell: |
-    $currentPath = (Get-Item -Path .).FullName
-    $env:PATH += ";$($currentPath)\ldc2-$($latest)-windows-multilib\bin"
+    $latest = (Invoke-WebRequest "https://ldc-developers.github.io/LATEST").toString().replace("`n","").replace("`r","")
+    $env:PATH += ";$($env:HOMEPATH)\ldc2-$($latest)-windows-multilib\bin"
     dub build --arch=%ARCH% --compiler=ldc2

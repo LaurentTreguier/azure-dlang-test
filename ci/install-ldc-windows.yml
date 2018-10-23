@@ -2,5 +2,7 @@ steps:
 - powershell: |
     $latest = (Invoke-WebRequest "https://ldc-developers.github.io/LATEST").toString().replace("`n","").replace("`r","")
     $url = "https://github.com/ldc-developers/ldc/releases/download/v$($latest)/ldc2-$($latest)-windows-multilib.7z"
+    pushd "$($env:HOMEPATH)"
     Invoke-WebRequest $url -OutFile ".\ldc.7z"
     7z x ldc.7z > $null
+    popd
