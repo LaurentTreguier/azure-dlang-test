@@ -1,0 +1,2 @@
+steps:
+- script: upx azure-dlang-test

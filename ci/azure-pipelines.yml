@@ -1,16 +1,33 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+jobs:
+- job: 'Linux'
+  pool:
+    vmImage: 'ubuntu-16.04'
+  variables:
+    arch: x86_64
+  steps:
+  - script: |
+      sudo apt-get update
+      sudo apt-get install upx-ucl
+  - template: install-ldc-posix.yml
+  - template: dub-build-posix.yml
+  - template: upx-compress.yml
 
-pool:
-  vmImage: 'ubuntu-16.04'
+- job: 'macOS'
+  pool:
+    vmImage: 'macOS-10.13'
+  variables:
+    arch: x86_64
+  steps:
+  - script: brew install upx-ucl
+  - template: install-ldc-posix.yml
+  - template: dub-build-posix.yml
+  - template: upx-compress.yml
 
-steps:
-- script: curl -fsS https://dlang.org/install.sh | bash -s dmd
-  displayName: 'Installation'
-
-- script: |
-    source $(~/dlang/install.sh dmd --activate)
-    dub build
-  displayName: 'Build'
+- job: 'Windows'
+  pool:
+    vmImage: 'vs2017-win2016'
+  variables:
+    arch: x86_mscoff
+  steps:
+  - template: install-ldc-windows.yml
+  - template: dub-build-windows.yml
