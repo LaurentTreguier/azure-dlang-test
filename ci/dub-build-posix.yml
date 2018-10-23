@@ -2,3 +2,4 @@ steps:
 - script: |
     source $(~/dlang/install.sh ldc --activate)
     dub build --arch=$ARCH --compiler=ldc2
+  displayName: 'Build'

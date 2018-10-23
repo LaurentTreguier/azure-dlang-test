@@ -5,10 +5,7 @@ jobs:
   variables:
     arch: x86_64
   steps:
-  - script: |
-      sudo dpkg --add-architecture i386
-      sudo apt-get update
-      sudo apt-get install upx-ucl gcc-multilib libcurl3:amd64 libcurl3:i386
+  - template: install-packages-linux.yml
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
   - template: upx-compress.yml
@@ -19,7 +16,7 @@ jobs:
   variables:
     arch: x86_64
   steps:
-  - script: brew install upx
+  - template: install-packages-macos.yml
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
   - template: upx-compress.yml
@@ -30,6 +27,6 @@ jobs:
   variables:
     arch: x86_mscoff
   steps:
-  - script: choco install 7zip
+  - template: install-packages-windows.yml
   - template: install-ldc-windows.yml
   - template: dub-build-windows.yml

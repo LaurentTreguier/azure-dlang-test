@@ -1,2 +1,3 @@
 steps:
 - script: upx azure-dlang-test
+  displayName: 'Executable compression'

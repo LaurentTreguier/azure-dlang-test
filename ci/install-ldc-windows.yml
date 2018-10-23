@@ -6,3 +6,4 @@ steps:
     Invoke-WebRequest $url -OutFile ".\ldc.7z"
     7z x ldc.7z > $null
     popd
+  displayName: 'LDC installation'
