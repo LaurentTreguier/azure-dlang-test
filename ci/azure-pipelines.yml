@@ -6,8 +6,9 @@ jobs:
     arch: x86_64
   steps:
   - script: |
+      sudo dpkg --add-architecture i386
       sudo apt-get update
-      sudo apt-get install upx-ucl
+      sudo apt-get install upx-ucl gcc-multilib libcurl4-openssl-dev:amd64 libcurl4-openssl-dev:i386
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
   - template: upx-compress.yml
