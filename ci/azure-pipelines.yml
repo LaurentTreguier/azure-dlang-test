@@ -1,43 +1,52 @@
 jobs:
-- job: 'Linux_x86'
+
+- job: 'Linux'
   pool:
     vmImage: 'ubuntu-16.04'
-  variables:
-    arch: x86
+  strategy:
+    matrix:
+      x86:
+        arch: x86
+      x86_64:
+        arch: x86_64
   steps:
-  - template: pipeline-linux.yml
-- job: 'Linux_x86_64'
-  pool:
-    vmImage: 'ubuntu-16.04'
-  variables:
-    arch: x86_64
-  steps:
-  - template: pipeline-linux.yml
-- job: 'macOS_x86'
+  - script: |
+      sudo dpkg --add-architecture i386
+      sudo apt-get update
+      sudo apt-get install upx-ucl gcc-multilib libcurl3:amd64 libcurl3:i386
+    displayName: 'APT packages installation'
+  - template: install-ldc-posix.yml
+  - template: dub-build-posix.yml
+  - script: strip azure-dlang-test
+  - template: upx-compress.yml
+
+- job: 'macOS'
   pool:
     vmImage: 'macOS-10.13'
-  variables:
-    arch: x86
+  strategy:
+    matrix:
+      x86:
+        arch: x86
+      x86_64:
+        arch: x86_64
   steps:
-  - template: pipeline-macos.yml
-- job: 'macOS_x86_64'
-  pool:
-    vmImage: 'macOS-10.13'
-  variables:
-    arch: x86_64
-  steps:
-  - template: pipeline-macos.yml
-- job: 'Windows_x86'
-  pool:
-    vmImage: 'vs2017-win2016'
-  variables:
-    arch: x86
-  steps:
-  - template: pipeline-windows.yml
-- job: 'Windows_x86_64'
+  - script: brew install upx
+    displayName: 'Homebrew packages installation'
+  - template: install-ldc-posix.yml
+  - template: dub-build-posix.yml
+  - template: upx-compress.yml
+
+- job: 'Windows'
   pool:
     vmImage: 'vs2017-win2016'
-  variables:
-    arch: x86_64
+  strategy:
+    matrix:
+      x86:
+        arch: x86
+      x86_64:
+        arch: x86_64
   steps:
-  - template: pipeline-windows.yml
+  - script: choco install 7zip
+    displayName: 'Chocolatey packages installation'
+  - template: install-ldc-windows.yml
+  - template: dub-build-windows.yml

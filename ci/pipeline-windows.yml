@@ -1,5 +1,0 @@
-steps:
-- script: choco install 7zip
-  displayName: 'Chocolatey packages installation'
-- template: install-ldc-windows.yml
-- template: dub-build-windows.yml
