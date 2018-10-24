@@ -11,9 +11,8 @@ jobs:
         arch: x86_64
   steps:
   - script: |
-      sudo dpkg --add-architecture i386
       sudo apt-get update
-      sudo apt-get install upx-ucl gcc-multilib libcurl3:amd64 libcurl3:i386
+      sudo apt-get install upx-ucl gcc-multilib
     displayName: 'APT packages installation'
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
