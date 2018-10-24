@@ -16,7 +16,6 @@ jobs:
     displayName: 'APT packages installation'
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - script: strip azure-dlang-test
   - template: upx-compress.yml
 
 - job: 'macOS'
