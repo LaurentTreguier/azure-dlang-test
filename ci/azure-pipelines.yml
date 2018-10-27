@@ -3,6 +3,8 @@ jobs:
 - job: 'Linux'
   pool:
     vmImage: 'ubuntu-16.04'
+  variables:
+    os_name: linux
   strategy:
     matrix:
       x86:
@@ -21,11 +23,12 @@ jobs:
     displayName: 'APT packages installation'
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - template: optimization-posix.yml
 
 - job: 'macOS'
   pool:
     vmImage: 'macOS-10.13'
+  variables:
+    os_name: osx
   strategy:
     matrix:
       x86:
@@ -42,11 +45,12 @@ jobs:
     displayName: 'Homebrew packages installation'
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - template: optimization-posix.yml
 
 - job: 'Windows'
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    os_name: windows
   strategy:
     matrix:
       x86:

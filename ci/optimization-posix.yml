@@ -1,3 +1,0 @@
-steps:
-- script: if [[ $OP = build ]]; then strip azure-dlang-test; upx azure-dlang-test; fi
-  displayName: 'Executable optimization'
