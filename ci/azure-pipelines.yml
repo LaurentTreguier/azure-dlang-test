@@ -21,7 +21,7 @@ jobs:
     displayName: 'APT packages installation'
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - template: upx-compress.yml
+  - template: optimization-posix.yml
 
 - job: 'macOS'
   pool:
@@ -42,7 +42,7 @@ jobs:
     displayName: 'Homebrew packages installation'
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - template: upx-compress.yml
+  - template: optimization-posix.yml
 
 - job: 'Windows'
   pool:
