@@ -1,5 +1,5 @@
 steps:
 - script: |
     source $(~/dlang/install.sh ldc --activate)
-    dub $OP --arch=$ARCH --compiler=ldc2
+    dub ${OP:-build} --build=${BUILD:-debug} --arch=${ARCH:-x86_64} --compiler=${COMPILER:-ldc2}
   displayName: 'Build'

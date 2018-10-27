@@ -8,14 +8,13 @@ jobs:
   strategy:
     matrix:
       x86:
-        op: build
+        build: release
         arch: x86
       x86_64:
-        op: build
+        build: release
         arch: x86_64
       test:
         op: test
-        arch: x86_64
   steps:
   - script: |
       sudo apt-get update
@@ -32,14 +31,13 @@ jobs:
   strategy:
     matrix:
       x86:
-        op: build
+        build: release
         arch: x86
       x86_64:
-        op: build
+        build: release
         arch: x86_64
       test:
         op: test
-        arch: x86_64
   steps:
   - script: brew install upx
     displayName: 'Homebrew packages installation'
@@ -54,14 +52,13 @@ jobs:
   strategy:
     matrix:
       x86:
-        op: build
+        build: release
         arch: x86
       x86_64:
-        op: build
+        build: release
         arch: x86_64
       test:
         op: test
-        arch: x86_64
   steps:
   - script: choco install 7zip
     displayName: 'Chocolatey packages installation'
