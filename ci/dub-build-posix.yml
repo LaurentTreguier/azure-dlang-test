@@ -1,6 +1,6 @@
 steps:
 - script: |
     source $(~/dlang/install.sh ldc --activate)
-    dub build --arch=$ARCH --compiler=ldc2
+    dub $OP --arch=$ARCH --compiler=ldc2
     strip azure-dlang-test
   displayName: 'Build'
