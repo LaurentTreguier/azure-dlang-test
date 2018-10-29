@@ -1,10 +1,10 @@
 trigger:
   branches:
     include:
+    - refs/tags/*
+    exclude:
     - master
     - release/*
-    exclude:
-    - refs/tags/*
 
 jobs:
 
@@ -15,12 +15,17 @@ jobs:
     os_name: linux
   strategy:
     matrix:
-      test:
-        op: test
+      x86:
+        build: release
+        arch: x86
+      x86_64:
+        build: release
+        arch: x86_64
   steps:
   - template: install-deps-linux.yml
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
+  - template: make-archive-posix.yml
 
 - job: 'macOS'
   pool:
@@ -29,12 +34,17 @@ jobs:
     os_name: osx
   strategy:
     matrix:
-      test:
-        op: test
+      x86:
+        build: release
+        arch: x86
+      x86_64:
+        build: release
+        arch: x86_64
   steps:
   - template: install-deps-macos.yml
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
+  - template: make-archive-posix.yml
 
 - job: 'Windows'
   pool:
@@ -43,9 +53,14 @@ jobs:
     os_name: windows
   strategy:
     matrix:
-      test:
-        op: test
+      x86:
+        build: release
+        arch: x86
+      x86_64:
+        build: release
+        arch: x86_64
   steps:
   - template: install-deps-windows.yml
   - template: install-ldc-windows.yml
   - template: dub-build-windows.yml
+  - template: make-archive-windows.yml

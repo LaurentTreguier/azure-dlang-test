@@ -1,0 +1,3 @@
+steps:
+- script: brew install upx
+  displayName: 'Homebrew packages installation'

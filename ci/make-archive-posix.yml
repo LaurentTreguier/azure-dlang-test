@@ -2,4 +2,4 @@ steps:
 - script: |
     strip azure-dlang-test
     upx azure-dlang-test
-    zip -0 azure-dlang-test-untagged.$OS_NAME.$ARCH.zip azure-dlang-test
+    zip -0 azure-dlang-test-$(git describe --tags).$(uname | tr '[:upper:]' '[:lower:]').$ARCH.zip azure-dlang-test

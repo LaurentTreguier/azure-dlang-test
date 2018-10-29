@@ -1,2 +1,2 @@
 steps:
-- script: 7z -mx=9 a azure-dlang-test-untagged.$OS_NAME.$ARCH.zip azure-dlang-test
+- powershell: 7z -mx=9 a azure-dlang-test-$(git describe --tags).windows.$ARCH.zip azure-dlang-test
