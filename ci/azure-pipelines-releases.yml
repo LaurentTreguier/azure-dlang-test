@@ -11,8 +11,6 @@ jobs:
 - job: 'Linux'
   pool:
     vmImage: 'ubuntu-16.04'
-  variables:
-    os_name: linux
   strategy:
     matrix:
       x86:
@@ -30,8 +28,6 @@ jobs:
 - job: 'macOS'
   pool:
     vmImage: 'macOS-10.13'
-  variables:
-    os_name: osx
   strategy:
     matrix:
       x86:
@@ -49,8 +45,6 @@ jobs:
 - job: 'Windows'
   pool:
     vmImage: 'vs2017-win2016'
-  variables:
-    os_name: windows
   strategy:
     matrix:
       x86:

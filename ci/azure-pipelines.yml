@@ -12,11 +12,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   variables:
-    os_name: linux
-  strategy:
-    matrix:
-      test:
-        op: test
+    op: test
   steps:
   - template: install-deps-linux.yml
   - template: install-ldc-posix.yml
@@ -26,11 +22,7 @@ jobs:
   pool:
     vmImage: 'macOS-10.13'
   variables:
-    os_name: osx
-  strategy:
-    matrix:
-      test:
-        op: test
+    op: test
   steps:
   - template: install-deps-macos.yml
   - template: install-ldc-posix.yml
@@ -40,11 +32,7 @@ jobs:
   pool:
     vmImage: 'vs2017-win2016'
   variables:
-    os_name: windows
-  strategy:
-    matrix:
-      test:
-        op: test
+    op: test
   steps:
   - template: install-deps-windows.yml
   - template: install-ldc-windows.yml
