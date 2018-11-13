@@ -1,9 +1,9 @@
 steps:
 - script: |
+    source $(~/dlang/install.sh ldc --activate)
     strip azure-dlang-test
     upx azure-dlang-test
     export NAME="azure-dlang-test-$BUILD_SOURCEBRANCHNAME.$(uname | tr '[:upper:]' '[:lower:]').$ARCH.zip"
     zip -0 $name azure-dlang-test
-    ldc2 ci/upload_asset.d
-    ./upload_asset --token=$GITHUB_TOKEN --file=$name --owner=LaurentTreguier --repo=azure-dlang-test --tag=$BUILD_SOURCEBRANCHNAME
+    rdmd ci/upload_asset.d --token=$GITHUB_TOKEN --file=$name --owner=LaurentTreguier --repo=azure-dlang-test --tag=$BUILD_SOURCEBRANCHNAME
   displayName: 'Archive packing'
