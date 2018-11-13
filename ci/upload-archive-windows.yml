@@ -6,5 +6,5 @@ steps:
     echo "Creating archive $name"
     7z -mx=9 a $name azure-dlang-test.exe
     echo "Uploading $(Join-Path -Path $(Get-Location) -ChildPath $name)"
-    rdmd ci\upload_asset --token="$env:GITHUB_TOKEN" --file=$name --owner=LaurentTreguier --repo=azure-dlang-test --tag=$env:BUILD_SOURCEBRANCHNAME < $name
+    Get-Content $name | rdmd ci\upload_asset --token="$env:GITHUB_TOKEN" --file=$name --owner=LaurentTreguier --repo=azure-dlang-test --tag=$env:BUILD_SOURCEBRANCHNAME
   displayName: 'Archive upload'
