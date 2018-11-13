@@ -5,6 +5,6 @@ steps:
     upx azure-dlang-test
     export NAME="azure-dlang-test-$BUILD_SOURCEBRANCHNAME.$(uname | tr '[:upper:]' '[:lower:]').$ARCH.zip"
     echo "Creating archive $NAME"
-    zip -0 "$NAME" azure-dlang-test
-    rdmd ci/upload_asset.d --token="$GITHUB_TOKEN" --file="$NAME" --owner=LaurentTreguier --repo=azure-dlang-test --tag="$BUILD_SOURCEBRANCHNAME"
+    zip -0 $NAME azure-dlang-test
+    rdmd ci/upload_asset.d --token="$GITHUB_TOKEN" --file="$(pwd)/$NAME" --owner=LaurentTreguier --repo=azure-dlang-test --tag=$BUILD_SOURCEBRANCHNAME
   displayName: 'Archive upload'
