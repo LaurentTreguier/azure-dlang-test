@@ -3,4 +3,4 @@ steps:
     $name = "azure-dlang-test-$env:BUILD_SOURCEBRANCHNAME.windows.$ARCH.zip"
     7z -mx=9 a $name azure-dlang-test.exe
     rdmd ci\upload_asset.d --token=$env:GITHUB_TOKEN --file=$name --owner=LaurentTreguier --repo=azure-dlang-test --tag=$env:BUILD_SOURCEBRANCHNAME
-  displayName: 'Archive packing'
+  displayName: 'Archive upload'
