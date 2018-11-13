@@ -17,9 +17,15 @@ int main(string[] args)
     string repository;
     string tag;
 
+    ubyte[] data;
+
+    foreach (chunk; stdin.byChunk(4096))
+    {
+        data ~= chunk;
+    }
+
     getopt(args, "token", &token, "file", &file, "owner", &owner, "repo",
             &repository, "tag", &tag);
-    const data = read(file);
     const releaseUrl = format!"%s/repos/%s/%s/releases/tags/%s"(apiEndpoint, owner, repository, tag);
     const release = parseJSON(get(releaseUrl));
     const uploadUrl = release["upload_url"].str.replaceAll(regex(`\{[^\}]*\}`,

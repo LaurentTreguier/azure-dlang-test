@@ -7,6 +7,5 @@ steps:
     echo "Creating archive $NAME"
     zip -0 $NAME azure-dlang-test
     echo "Uploading $(pwd)/$NAME"
-    ldc2 ci/upload_asset.d
-    ./upload_asset --token="$GITHUB_TOKEN" --file="$(pwd)/$NAME" --owner=LaurentTreguier --repo=azure-dlang-test --tag=$BUILD_SOURCEBRANCHNAME
+    rdmd ci/upload_asset --token="$GITHUB_TOKEN" --file=$NAME --owner=LaurentTreguier --repo=azure-dlang-test --tag=$BUILD_SOURCEBRANCHNAME < $NAME
   displayName: 'Archive upload'
