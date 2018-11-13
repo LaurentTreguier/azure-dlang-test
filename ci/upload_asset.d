@@ -16,7 +16,6 @@ int main(string[] args)
     string owner;
     string repository;
     string tag;
-
     ubyte[] data;
 
     foreach (chunk; stdin.byChunk(4096))
@@ -34,6 +33,10 @@ int main(string[] args)
     auto request = HTTP(uploadUrl);
     request.addRequestHeader("Authorization", "token " ~ token);
     request.setPostData(data, "application/zip");
+    request.onReceive = (bytes) {
+        stdout.write(cast(string) bytes);
+        return bytes.length;
+    };
     request.perform();
 
     return 0;
