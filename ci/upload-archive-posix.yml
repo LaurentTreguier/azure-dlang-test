@@ -1,0 +1,8 @@
+steps:
+- script: |
+    strip azure-dlang-test
+    upx azure-dlang-test
+    export NAME="azure-dlang-test-$BUILD_SOURCEBRANCHNAME.$(uname | tr '[:upper:]' '[:lower:]').$ARCH.zip"
+    zip -0 $name azure-dlang-test
+    rdmd ci/upload_asset.d --token=$GITHUB_TOKEN --file=$name --owner=LaurentTreguier --repo=azure-dlang-test --tag=$BUILD_SOURCEBRANCHNAME
+  displayName: 'Archive packing'

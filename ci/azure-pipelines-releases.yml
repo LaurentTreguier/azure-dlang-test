@@ -25,7 +25,7 @@ jobs:
   - template: install-deps-linux.yml
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - template: make-archive-posix.yml
+  - template: upload-archive-posix.yml
 
 - job: 'macOS'
   pool:
@@ -44,7 +44,7 @@ jobs:
   - template: install-deps-macos.yml
   - template: install-ldc-posix.yml
   - template: dub-build-posix.yml
-  - template: make-archive-posix.yml
+  - template: upload-archive-posix.yml
 
 - job: 'Windows'
   pool:
@@ -63,4 +63,4 @@ jobs:
   - template: install-deps-windows.yml
   - template: install-ldc-windows.yml
   - template: dub-build-windows.yml
-  - template: make-archive-windows.yml
+  - template: upload-archive-windows.yml
