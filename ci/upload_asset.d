@@ -19,6 +19,7 @@ int main(string[] args)
 
     getopt(args, "token", &token, "file", &file, "owner", &owner, "repo",
             &repository, "tag", &tag);
+    const data = read(file);
     const releaseUrl = format!"%s/repos/%s/%s/releases/tags/%s"(apiEndpoint, owner, repository, tag);
     const release = parseJSON(get(releaseUrl));
     const uploadUrl = release["upload_url"].str.replaceAll(regex(`\{[^\}]*\}`,
@@ -26,7 +27,7 @@ int main(string[] args)
 
     auto request = HTTP(uploadUrl);
     request.addRequestHeader("Authorization", "token " ~ token);
-    request.setPostData(read(file), "application/zip");
+    request.setPostData(data, "application/zip");
     request.perform();
 
     return 0;
